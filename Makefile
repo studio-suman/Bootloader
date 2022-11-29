@@ -12,10 +12,10 @@ kernel-entry.o: kernel-entry.asm
 	nasm $< -f elf -o $@
 
 kernel.o:	kernel.c
-	gcc  -m32 -fno-pie -ffreestanding -c $< -o $@
+	gcc -m32 -fno-pie -ffreestanding -c $< -o $@
 
 mbr.bin: mbr.asm
-	nasm	$<	-f	bin	-o	$@
+	nasm $< -f bin -o $@
 
 os-image.bin: mbr.bin kernel.bin
 	cat $^ > $@
