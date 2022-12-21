@@ -19,7 +19,7 @@ OUTPUT = winos/boot/kernel.bin
 all:	run
 
 kernel.bin: $(OBJS)
-	ld -m elf_i386 -Ttext 0x1000 -o $@ $^ --oformat binary --ignore-unresolved-symbol _GLOBAL_OFFSET_TABLE_ --entry start
+	ld -m elf_i386 -Ttext 0x1000 -o $@ $^ --oformat binary --ignore-unresolved-symbol _GLOBAL_OFFSET_TABLE_ --entry kmain
 	cp $@ myOS/boot/$@
 
 
