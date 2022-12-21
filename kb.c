@@ -1,5 +1,6 @@
-
+#include "include/system.h"
 #include "include/kb.h"
+
 string readStr()
 {
     char buff;

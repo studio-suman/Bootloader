@@ -1,7 +1,13 @@
 #include "include/screen.h"
+#include "include/system.h"
+
+
+
+
 int cursorX = 0, cursorY = 0;
 const uint8 sw = 80,sh = 25,sd = 2; 
 int color = 0x0F;
+
 void clearLine(uint8 from,uint8 to)
 {
         uint16 i = sw * from * sd;
@@ -12,6 +18,7 @@ void clearLine(uint8 from,uint8 to)
                 vidmem[(i / 2)*2 ] = 0;
         }
 }
+
 void updateCursor()
 {
     unsigned temp;
@@ -23,6 +30,7 @@ void updateCursor()
     outportb(0x3D4, 15);                                                                // CRT Control Register: Select Send Low byte
     outportb(0x3D5, temp);                                                              // Send the Low byte of the cursor location
 }
+
 void clearScreen()
 {
         clearLine(0,sh-1);
@@ -100,7 +108,7 @@ void printch(char c)
     newLineCheck();
 }
 
-void print (string ch)
+void print(string ch)
 {
         uint16 i = 0;
         uint8 length = strlength(ch);              //Updated (Now we store string length on a variable to call the function only once)
@@ -112,14 +120,17 @@ void print (string ch)
                 print(ch[i++]);*/
         
 }
+
 void set_screen_color(int text_color,int bg_color)
 {
 	color =  (bg_color << 4) | text_color;;
 }
+
 void set_screen_color_from_color_code(int color_code)
 {
 	color = color_code;
 }
+
 void print_colored(string ch,int text_color,int bg_color)
 {
 	int current_color = color;

@@ -1,4 +1,5 @@
 #include "include/shell.h"
+
 string ver = "1.0.2"; 
 string license = "Licensed under the GNU General Public License v3.0";
 
@@ -115,6 +116,7 @@ void sum()
 	print("\n");
 	print("---------------------\n");
 }
+
 void echo()
 {	
 	print("\n---------------------");
@@ -264,6 +266,7 @@ void fibonaci()
 	print("---------------------------\n");
 	
 }
+
 int fibo(int n)
 {
 	if(n <2)
@@ -271,6 +274,7 @@ int fibo(int n)
 	else 
 		return fibo(n-1) + fibo(n-2);
 }
+
 int gcd_couple(int a,int b)
 {
 	if(b == 0)
@@ -280,6 +284,7 @@ int gcd_couple(int a,int b)
 	else 
 		return gcd_couple(b,a % b);
 }
+
 void gcd()
 {
 	print("\n---------GCD---------");
@@ -307,6 +312,7 @@ void gcd()
 	print("\n");
 	print("---------------------\n");
 }
+
 void print_matrix(int matrix[][100],int rows,int cols)
 {
 	int i =0;
@@ -321,6 +327,7 @@ void print_matrix(int matrix[][100],int rows,int cols)
 		print("\n");
 	}
 }
+
 void set_background_color()
 {	
 	print("\n--------------------------------------------");

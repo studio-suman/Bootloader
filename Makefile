@@ -22,24 +22,16 @@ kernel.bin: $(OBJS)
 	ld -m elf_i386 -Ttext 0x1000 -o $@ $^ --oformat binary --ignore-unresolved-symbol _GLOBAL_OFFSET_TABLE_ --entry start
 	cp $@ myOS/boot/$@
 
-obj/kasm.o: kernel.asm
-	$(ASSEMBLER) $(ASFLAGS) $< -o $@
-
-obj/kc.o:	kernel.c
-	gcc $(CFLAGS) $< -o $@
 
 mbr.bin: mbr.asm
 	$(ASSEMBLER) $< -f bin -o $@
 
-myOS.iso:
-	grub-mkrescue -o myOS.iso myOS/
+obj/kasm.o: kernel-entry.asm
+	$(ASSEMBLER) $(ASFLAGS) $< -o $@
 
-# qemu-system-i386 -boot d -m 512 -cdrom $@
-
-os-image.bin: mbr.bin kernel.bin
-	cat $^ > $@
-	
-	
+obj/kc.o:	kernel.c
+	gcc $(CFLAGS) $< -o $@
+		
 obj/idt.o:idt.c
 	$(COMPILER) $(CFLAGS) $< -o obj/idt.o 
 
@@ -64,8 +56,15 @@ obj/util.o:util.c
 obj/shell.o:shell.c
 	$(COMPILER) $(CFLAGS) $< -o obj/shell.o
 
+myOS.iso:
+	grub-mkrescue -o myOS.iso myOS/
 
-run: os-image.bin myOS.iso
+# qemu-system-i386 -boot d -m 512 -cdrom $@
+
+os-image.bin: mbr.bin kernel.bin
+	cat $^ > $@
+
+run: os-image.bin
 	qemu-system-i386 -fda $<
 
 clean:

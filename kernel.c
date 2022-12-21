@@ -3,12 +3,18 @@
     *video_memory = 'P';
 } */
 
-#include "./include/kb.h"
-#include "./include/isr.h"
-#include "./include/idt.h"
-#include "./include/util.h"
-#include "./include/shell.h"
-kmain()
+
+/* #include "include/idt.h"
+#include "include/util.h"
+#include "include/kb.h"
+#include "include/isr.h"
+#include "include/shell.h"
+#include "include/screen.h"
+ */
+
+
+
+void kmain()
 {
 	isr_install();
 	clearScreen();

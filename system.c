@@ -1,25 +1,12 @@
-#include "./include/string.h"
-uint16 strlength(string ch)
+#include "include/system.h"
+uint8 inportb (uint16 _port)
 {
-        uint16 i = 0;           //Changed counter to 0
-        while(ch[i++]);  
-        return i-1;               //Changed counter to i instead of i--
+    	uint8 rv;
+    	__asm__ __volatile__ ("inb %1, %0" : "=a" (rv) : "dN" (_port));
+    	return rv;
 }
 
-/* Added in episode 3*/ /*This function compares two strings and returns true (1) if they are equal or false (0) if they are not equal */
-
-uint8 strEql(string ch1,string ch2)                     
+void outportb (uint16 _port, uint8 _data)
 {
-        uint8 result = 1;
-        uint8 size = strlength(ch1);
-        if(size != strlength(ch2)) result =0;
-        else 
-        {
-        uint8 i = 0;
-        for(i;i<=size;i++)
-        {
-                if(ch1[i] != ch2[i]) result = 0;
-        }
-        }
-        return result;
+	__asm__ __volatile__ ("outb %1, %0" : : "dN" (_port), "a" (_data));
 }

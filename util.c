@@ -1,4 +1,4 @@
-#include "./include/util.h"
+#include "include/util.h"
 
 void memory_copy(char *source, char *dest, int nbytes) {
     int i;
@@ -29,6 +29,7 @@ void int_to_ascii(int n, char str[]) {
     /* TODO: implement "reverse" */
     return str;
 }
+
 string int_to_string(int n)
 {
 	string ch = malloc(50);
@@ -60,6 +61,7 @@ int str_to_int(string ch)
 	}
 	return n;
 }
+
 void * malloc(int nbytes)
 {
 	char variable[nbytes];
