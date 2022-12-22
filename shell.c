@@ -10,9 +10,9 @@ void launch_shell(int n)
 	do	
 	{
 
-			print("[");
-			print(int_to_string(n));
-			print("] kernel> ");
+			print_colored("[",3,0);
+			print_colored(int_to_string(n),3,0);
+			print_colored("] kernel> ",3,0);
 		    ch = readStr(); //memory_copy(readStr(), ch,100);
 		    if(strEql(ch,"cmd"))
 		    {
@@ -30,7 +30,7 @@ void launch_shell(int n)
 		    else if(strEql(ch,"shutdown"))
 		    {	
 				print("\n");
-		    	print("\nShutting down, WinOS. \n");
+		    	print("\nShutting down, WinOS... \n");
 				print("Thanks for using the WinOS Open Source Operating System\n");
 				print("You can now close your computer. \n");
 				print("\n");
@@ -208,6 +208,7 @@ void fill_array(int arr[],int n)
 		print("\n");
 	}
 }
+
 void print_array(int arr[],int n)
 {
 	int i = 0;
@@ -221,6 +222,7 @@ void print_array(int arr[],int n)
 	}
 	print("\n");
 }
+
 void insertion_sort(int arr[],int n,int ordre) //1 is increasing, 0 is descreasing
 {
 	int i = 0;
@@ -236,6 +238,7 @@ void insertion_sort(int arr[],int n,int ordre) //1 is increasing, 0 is descreasi
 		arr[j] = aux;
 	}
 }
+
 int sum_array(int arr[],int n)
 {
 	int i = 0;

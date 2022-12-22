@@ -1,8 +1,5 @@
 #include "include/screen.h"
-
 #include "include/system.h"
-
-
 
 
 int cursorX = 0, cursorY = 0;
