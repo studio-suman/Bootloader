@@ -1,4 +1,4 @@
-/* void main() {
+/* void kmain() {
     char* video_memory = (char*) 0xb8000;
     *video_memory = 'P';
 } */
@@ -14,8 +14,12 @@
 
 
 
-void kmain()
+kmain()
 {
+	char* video_memory = (char*) 0xb8000;
+    video_memory[0] = 'P';
+	video_memory[1] = '0x2';
+
 	isr_install();
 	clearScreen();
 	print("\n");

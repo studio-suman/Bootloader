@@ -1,5 +1,4 @@
-[bits 32]
-
+bits 32
 
 ;multiboot spec
 section             .text
